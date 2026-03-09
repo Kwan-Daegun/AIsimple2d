@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.088, y: 1.28}
+  m_AnchoredPosition: {x: -0.07, y: 0.51}
   m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5075540722811862062
@@ -192,6 +192,8 @@ GameObject:
   - component: {fileID: 7040167649247389001}
   - component: {fileID: 5378510324409304868}
   - component: {fileID: 5145047788607596604}
+  - component: {fileID: -8569784781699777772}
+  - component: {fileID: 7674236213068465271}
   m_Layer: 8
   m_Name: Princess
   m_TagString: Princess
@@ -208,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 6275790095360668786}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75.3, y: -15.1, z: 0}
+  m_LocalPosition: {x: -75.3, y: -15.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -256,8 +258,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.94820046, a: 1}
+  m_Sprite: {fileID: 100071343, guid: 3909e1897baa2874097b79fd63bbc4e5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -299,8 +301,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.75514317}
+  m_Size: {x: 1, y: 1.6718597}
   m_Direction: 0
 --- !u!50 &7040167649247389001
 Rigidbody2D:
@@ -342,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  followDistance: 2
+  followDistance: 4
   speed: 9
 --- !u!114 &5145047788607596604
 MonoBehaviour:
@@ -358,6 +360,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 2117923648785861266}
+--- !u!114 &-8569784781699777772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275790095360668786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9049c5df1973e43824a6f8c809bfee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healRadius: 3
+  healAmount: 2
+  healInterval: 1
+--- !u!114 &7674236213068465271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275790095360668786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3304f17ff189314b9f543193501019a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleRight:
+  - {fileID: 100071343, guid: 3909e1897baa2874097b79fd63bbc4e5, type: 3}
+  - {fileID: 279709482, guid: 3909e1897baa2874097b79fd63bbc4e5, type: 3}
+  - {fileID: 230647265, guid: 3909e1897baa2874097b79fd63bbc4e5, type: 3}
+  - {fileID: -467343537, guid: 3909e1897baa2874097b79fd63bbc4e5, type: 3}
+  - {fileID: -1892927095, guid: 3909e1897baa2874097b79fd63bbc4e5, type: 3}
+  walkRight:
+  - {fileID: 1683992323, guid: d5baa9f63a665ff4f8764aed4141d572, type: 3}
+  - {fileID: 2127525824, guid: d5baa9f63a665ff4f8764aed4141d572, type: 3}
+  - {fileID: -1510303695, guid: d5baa9f63a665ff4f8764aed4141d572, type: 3}
+  - {fileID: -600288388, guid: d5baa9f63a665ff4f8764aed4141d572, type: 3}
+  - {fileID: 1211834206, guid: d5baa9f63a665ff4f8764aed4141d572, type: 3}
+  - {fileID: 743466825, guid: d5baa9f63a665ff4f8764aed4141d572, type: 3}
+  - {fileID: 2025232290, guid: d5baa9f63a665ff4f8764aed4141d572, type: 3}
+  - {fileID: -135327835, guid: d5baa9f63a665ff4f8764aed4141d572, type: 3}
+  deathRight:
+  - {fileID: -976504473, guid: 3fe20a09f20129a41972f59ef66b0cd8, type: 3}
+  - {fileID: 2016414455, guid: 3fe20a09f20129a41972f59ef66b0cd8, type: 3}
+  - {fileID: -24589570, guid: 3fe20a09f20129a41972f59ef66b0cd8, type: 3}
+  - {fileID: -1978051162, guid: 3fe20a09f20129a41972f59ef66b0cd8, type: 3}
+  - {fileID: 1573738199, guid: 3fe20a09f20129a41972f59ef66b0cd8, type: 3}
+  idleFPS: 10
+  walkFPS: 8
+  deathFPS: 10
 --- !u!1 &6703512343993179686
 GameObject:
   m_ObjectHideFlags: 0

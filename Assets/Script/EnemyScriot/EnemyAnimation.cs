@@ -22,6 +22,8 @@ public class EnemyAnimation : MonoBehaviour
     private int frame;
     private Vector2 lastDir = Vector2.right;
 
+    private bool deathStarted;
+
     void Start()
     {
         ai = GetComponent<EnemyAI>();
@@ -33,6 +35,13 @@ public class EnemyAnimation : MonoBehaviour
     {
         if (health != null && health.IsDead)
         {
+            if (!deathStarted)
+            {
+                deathStarted = true;
+                frame = 0;
+                timer = 0f;
+            }
+
             float frameRate = 1f / deathFPS;
 
             timer += Time.deltaTime;

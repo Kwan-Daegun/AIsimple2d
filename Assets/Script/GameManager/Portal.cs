@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public Sprite[] frames;        
+    public Sprite[] frames;
     public float frameRate = 0.12f;
 
     private SpriteRenderer sr;
@@ -48,9 +48,12 @@ public class Portal : MonoBehaviour
     {
         if (!active) return;
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Princess"))
         {
             Debug.Log("Level Complete");
+
+            if (GameManager.instance != null)
+                GameManager.instance.GameWin();
         }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyAiHealth : MonoBehaviour
 {
@@ -7,7 +8,12 @@ public class EnemyAiHealth : MonoBehaviour
 
     public HealthBar healthBar;
 
+    public float hitFlashTime = 0.15f;
+
     private bool dead = false;
+
+    private SpriteRenderer sr;
+    private Color originalColor;
 
     public int CurrentHealth
     {
@@ -22,6 +28,10 @@ public class EnemyAiHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+
+        sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+            originalColor = sr.color;
 
         if (healthBar != null)
             healthBar.SetHealth(currentHealth, maxHealth);
@@ -38,11 +48,22 @@ public class EnemyAiHealth : MonoBehaviour
 
         Debug.Log(gameObject.name + " took " + damage + " damage. Current health: " + currentHealth);
 
+        StartCoroutine(HitFlash());
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             Die();
         }
+    }
+
+    IEnumerator HitFlash()
+    {
+        if (sr == null) yield break;
+
+        sr.color = Color.red;
+        yield return new WaitForSeconds(hitFlashTime);
+        sr.color = originalColor;
     }
 
     void Die()

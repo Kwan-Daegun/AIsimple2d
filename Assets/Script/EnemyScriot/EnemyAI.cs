@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
     public float speed = 3f;
     public float chaseDistance = 6f;
     public float attackDistance = 1.5f;
+    public float chaseSpeed = 4.5f;
 
     public int damage = 10;
     public float attackCooldown = 1f;
@@ -33,6 +34,8 @@ public class EnemyAI : MonoBehaviour
     public Transform[] patrolPoints;
     public float patrolDistance = 3f;
     public float idleTime = 2f;
+
+    public AudioSource attackSound;
 
     private float lastAttackTime;
     private int patrolIndex = 0;
@@ -49,8 +52,8 @@ public class EnemyAI : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         princess = GameObject.FindGameObjectWithTag("Princess")?.transform;
+
         if (patrolPoints == null || patrolPoints.Length == 0)
-        // i added this to auto assign the patrol points if they are not set hohohoho.
         {
             patrolPoints = new Transform[2];
 
@@ -199,7 +202,7 @@ public class EnemyAI : MonoBehaviour
 
         FaceDirection(dir);
 
-        rb.MovePosition(rb.position + dir * speed * Time.deltaTime);
+        rb.MovePosition(rb.position + dir * chaseSpeed * Time.deltaTime);
     }
 
     void Attack()
@@ -208,6 +211,9 @@ public class EnemyAI : MonoBehaviour
             return;
 
         lastAttackTime = Time.time;
+
+        if (attackSound != null)
+            attackSound.Play();
 
         PlayerHealth playerHp = currentTarget.GetComponent<PlayerHealth>();
         if (playerHp != null)
