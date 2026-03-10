@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         player = FindObjectOfType<PlayerHealth>();
         princess = FindObjectOfType<PrincessHealth>();
 
@@ -65,4 +66,22 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f;
     }
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+    
 }

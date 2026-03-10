@@ -323,10 +323,10 @@ MonoBehaviour:
   speed: 8
   chaseDistance: 7
   attackDistance: 1.5
-  chaseSpeed: 9
+  chaseSpeed: 20
   damage: 10
   attackCooldown: 1
-  runAwayHealthThreshold: 50
+  runAwayHealthThreshold: 30
   patrolPoints: []
   patrolDistance: 5
   idleTime: 2
